@@ -2,7 +2,7 @@
 
 const express = require('express'); //Express.js digunakan untuk membuat server
 const bodyParser = require('body-parser'); //untuk mengurai data request dengan format JSON
-const {db} = require('./model/db');
+const {db} = require('./model/db'); //FOLDER MODEL isinya db.js>>>>>>
 const app = express();
 const port = 3000;
 
@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
 // GET>>>>>>>>>>>>>>Endpoint untuk mendapatkan daftar negara beserta informasi tambahan<SELURUH DATA>
-app.get('/api/readData', (req, res) => { //function req=
+app.get('/api/readData', (req, res) => { 
   const sqlQuery = "SELECT * FROM negara"; //query string
 
   db.query(sqlQuery, (err, result)=>{
@@ -91,6 +91,6 @@ db.query(sqlQuery, idNegara, (err, result) => {
 });
 
 
-app.listen(port, () => { //untukmenjalankan server Express; 'port' = nomor port server berjalan
+app.listen(port, () => { //untuk menjalankan server Express; 'port' = nomor port server berjalan
 console.log(`Server berjalan di http://localhost:${port}/api/negara`);
 });
